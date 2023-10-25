@@ -10,6 +10,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -43,7 +44,8 @@ public class UnloadCommand implements TabExecutor {
         Plugin[] plugins = manager.getPlugins();
 
         for (final Plugin plugin : plugins) {
-            if (plugin.isEnabled()) {
+            // checks if plugin is disabled and not added to the command yet
+            if (plugin.isEnabled() && !Arrays.toString(strings).contains(plugin.getName())) {
                 availablePlugins.add(plugin.getName());
             }
         }
