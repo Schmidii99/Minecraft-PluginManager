@@ -1,0 +1,28 @@
+name: PluginManager
+version: '${project.version}'
+main: me.florianschmid.pluginmanager.PluginManager
+api-version: '1.16'
+commands:
+  load:
+    usage: /<command>
+    description: Loads one or multiple plugins that you provide
+    permission: pluginmanager.loadplugin
+    permission-message: You dont have the permission to load a plugin!
+  unload:
+    usage: /<command>
+    description: Unloads one or multiple plugins that you provide
+    permission: pluginmanager.unloadplugin
+    permission-message: You dont have the permission to unload a plugin!
+permissions:
+  pluginmanager.manageplugins:
+    description: Allows a player to load or unload a plugin.
+    default: op
+    children:
+      pluginmanager.loadplugin: true
+      pluginmanager.unloadplugin: true
+  pluginmanager.loadplugin:
+    default: op
+    description: Allows a player to load a plugin.
+  pluginmanager.unloadplugin:
+    default: op
+    description: Allows a player to unload a plugin.
