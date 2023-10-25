@@ -22,12 +22,12 @@ public class LoadCommand implements CommandExecutor {
         for (String pluginName : strings) {
             final Plugin plugin = manager.getPlugin(pluginName);
             if (Objects.isNull(plugin)) {
-                commandSender.sendMessage(ChatColor.RED + "Plugin '" + ChatColor.BLUE + pluginName +"' not found!");
+                commandSender.sendMessage(ChatColor.RED + "Plugin '" + ChatColor.BLUE + pluginName + ChatColor.RED +"' not found!");
                 continue;
             }
 
             manager.enablePlugin(plugin);
-            commandSender.sendMessage(ChatColor.YELLOW + "Plugin '" + ChatColor.BLUE + pluginName +"' enabled");
+            commandSender.sendMessage(ChatColor.YELLOW + "Plugin '" + ChatColor.BLUE + pluginName + ChatColor.YELLOW +"' enabled");
         }
 
         return true;
