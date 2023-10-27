@@ -43,11 +43,19 @@ public class UnloadCommand implements TabExecutor {
         ArrayList<String> availablePlugins = new ArrayList<String>();
         Plugin[] plugins = manager.getPlugins();
 
+        final String lastElement = strings[strings.length - 1];
+
         for (final Plugin plugin : plugins) {
-            // checks if plugin is disabled and not added to the command yet
-            if (plugin.isEnabled() && !Arrays.toString(strings).contains(plugin.getName())) {
-                availablePlugins.add(plugin.getName());
+            // check if plugin is enabled
+            if (!plugin.isEnabled()) {
+                continue;
             }
+            // check if plugin is already set
+            if (Arrays.toString(strings).contains(plugin.getName())) {
+                continue;
+            }
+            if (plugin.getName().toLowerCase().startsWith(lastElement.toLowerCase()))
+                availablePlugins.add(plugin.getName());
         }
 
         return availablePlugins;
